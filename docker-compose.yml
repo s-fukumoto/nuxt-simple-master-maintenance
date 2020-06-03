@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  app:
+    image: simple-mst-app
+    build:
+      context: app
+    container_name: simple-mst-app
+    depends_on:
+      - db
+    tty: true
+    ports:
+      - ${APP_PORT}:3000
+      #- 9229:9229
+    volumes:
+      - ./app:/app
+    working_dir: /app/src
+    #command: npm dev
+  db:
+    image: mysql:5.7
+    container_name: simple-mst-db
+    ports:
+      - ${DB_PORT}:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql

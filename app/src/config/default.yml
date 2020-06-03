@@ -1,0 +1,40 @@
+# API
+baseUrl: "http://localhost:63000"
+
+# JSON Web Token
+jwt:
+  secret: "7$|i93x%6z)P"
+  path: ["/api/auth/login"]
+
+# JSON Web Token
+crypto:
+  key: "K2UL3Q6FM6KL"
+
+# DB(MySQL)
+db:
+  username: "adminuser"
+  password: "mypass"
+  database: "simple_mst"
+  host: "db"
+  port: 3306
+  connectionLimit: 10
+  dialect: "mysql"
+  operatorsAliases: "false"
+
+import:
+  table:
+    address:
+      name: "m_address"
+      ignoreLines: 1
+    company:
+      name: "m_company"
+      ignoreLines: 1
+    line:
+      name: "m_line"
+      ignoreLines: 1
+    station:
+      name: "m_station"
+      ignoreLines: 1
+    stationjoin:
+      name: "m_station_join"
+      ignoreLines: 1

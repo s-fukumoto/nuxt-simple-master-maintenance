@@ -1,0 +1,12 @@
+.DS_Store
+Desktop.ini
+
+# IDE Files
+.project
+.settings
+.vscode
+.idea
+.editorconfig
+
+# resource
+.env
