@@ -26,6 +26,7 @@ import:
     address:
       name: "m_address"
       ignoreLines: 1
+      encoding: "Shift_JIS"
     company:
       name: "m_company"
       ignoreLines: 1

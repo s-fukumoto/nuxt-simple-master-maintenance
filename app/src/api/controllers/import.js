@@ -8,7 +8,8 @@ module.exports = {
   execute: async (req, res, next) => {
     try {
       const tableConf = config.import.table[req.params.type]
-      await fileUtil.convertFileUtf8(req.file.path)
+      tableConf.encoding &&
+        (await fileUtil.convertFileUtf8(req.file.path, tableConf.encoding))
       await mysqlUtil.loadFromFile(
         req.file.path,
         tableConf.name,
