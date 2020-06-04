@@ -39,7 +39,7 @@
       <p-btn @click="saveItem">
         保存
       </p-btn>
-      <p-btn color="secondary" @click="$emit('dialog-close')">
+      <p-btn color="secondary" @click="close">
         キャンセル
       </p-btn>
     </v-card-actions>
@@ -60,7 +60,6 @@ export default {
 
   data() {
     return {
-      upd: false, // 更新かどうか
       showPass: false, // パスワードを表示するか
       editedItem: {},
       defaultItem: {
@@ -73,6 +72,10 @@ export default {
   },
 
   computed: {
+    // 更新かどうか
+    upd() {
+      return !!this.username
+    },
     formTitle() {
       return this.upd ? '情報変更' : '新規作成'
     },
@@ -91,15 +94,10 @@ export default {
 
   methods: {
     setData() {
-      if (this.username) {
-        this.upd = true
+      this.upd &&
         this.getItem().then((data) => {
           this.editedItem = { ...this.editedItem, ...data }
         })
-      } else {
-        this.upd = false
-        this.editedItem = { ...this.defaultItem }
-      }
     },
 
     async getItem() {
@@ -112,6 +110,11 @@ export default {
       await this.$axios[method](`/api/user/${this.editedItem.username}`, {
         data: this.editedItem,
       })
+      this.close()
+    },
+
+    async close() {
+      this.editedItem = { ...this.defaultItem }
       this.$emit('dialog-close')
     },
   },

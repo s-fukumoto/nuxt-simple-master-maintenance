@@ -22,19 +22,20 @@
         <div class="flex-grow-1" />
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on }">
+            <!-- 新規追加 -->
             <p-btn tile icon color="primary" small class="mb-2" v-on="on">
               <v-icon>fa-plus-square</v-icon>
             </p-btn>
           </template>
 
-          <!-- 削除確認 -->
+          <!-- 削除確認ダイアログ -->
           <p-dialog-delete
             v-if="del"
             :username="selectedUsername"
             @dialog-close="close"
           />
 
-          <!-- 編集 -->
+          <!-- 編集ダイアログ -->
           <p-dialog-edit
             v-else
             :username="selectedUsername"
@@ -44,9 +45,11 @@
       </v-toolbar>
     </template>
     <template v-slot:item.action="{ item }">
+      <!-- 編集 -->
       <v-icon color="primary" small class="mr-2" @click="openEdit(item)">
         fa-edit
       </v-icon>
+      <!-- 削除 -->
       <v-icon color="primary" small class="mr-2" @click="confirmDelete(item)">
         fa-trash-alt
       </v-icon>
@@ -117,10 +120,10 @@ export default {
     },
 
     close() {
-      this.dialog = false
       this.del = false
       this.selectedIndex = -1
       this.reload()
+      this.dialog = false
     },
 
     async reload() {
