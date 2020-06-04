@@ -2,11 +2,11 @@ const fs = require('fs')
 const iconv = require('iconv-lite')
 
 module.exports = {
-  // Shift_JIS -> UTF8
-  convertFileUtf8: (filePath) => {
+  // UTF8変換
+  convertFileUtf8: (filePath, encoding) => {
     const data = fs.readFileSync(filePath)
-    // const str = iconv.decode(data, 'Shift_JIS').replace(/\r\n/gm, "\n")
-    const str = iconv.decode(data, 'Shift_JIS')
+    // const str = iconv.decode(data, encoding).replace(/\r\n/gm, "\n")
+    const str = iconv.decode(data, encoding)
     fs.writeFileSync(filePath, str)
     console.log('file convert completed !!')
   },
