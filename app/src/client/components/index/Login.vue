@@ -58,7 +58,6 @@ export default {
       }
     },
     async login() {
-      console.log(this.formUserName)
       return await this.$auth
         .loginWith('local', {
           data: {
