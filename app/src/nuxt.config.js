@@ -1,13 +1,8 @@
-const conf = require('config')
 const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
   srcDir: './client/',
-  /*
-   ** 個別設定
-   */
-  env: conf,
 
   /*
    ** Headers of the page
@@ -69,7 +64,7 @@ module.exports = {
    ** proxy
    */
   proxy: {
-    '/api': conf.baseUrl,
+    '/api': 'http://localhost:63000',
   },
 
   /*
