@@ -2,41 +2,45 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   extends: [
-    "eslint:recommended",
+    'eslint:recommended',
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // より厳しいルールにするには`plugin:vue/strongly-recommended` もしくは `plugin:vue/recommended` に切り替えることを検討してください。
-    "plugin:vue/recommended",
-    "plugin:prettier/recommended"
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended',
   ],
   // *.vue ファイルを lint にかけるために必要
-  plugins: [
-    'vue'
-  ],
+  plugins: ['vue'],
   // ここにカスタムルールを追加します。
   rules: {
-    "semi": [2, "never"],
-    "no-console": "off",
-    "vue/max-attributes-per-line": "off",
-    "vue/html-self-closing": [
-      "error", 
+    semi: [2, 'never'],
+    'no-console': 'off',
+    'no-unused-vars': [
+      'error',
       {
-        "html": {
-          "void": "always",
-        }
-      }
+        args: 'none',
+      },
     ],
-    "prettier/prettier": [
-      "error",
+    'vue/max-attributes-per-line': 'off',
+    'vue/html-self-closing': [
+      'error',
       {
-        "singleQuote": true,
-        "semi": false
-      }
-    ]
-  }
+        html: {
+          void: 'always',
+        },
+      },
+    ],
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        semi: false,
+      },
+    ],
+  },
 }
