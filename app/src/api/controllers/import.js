@@ -1,4 +1,3 @@
-const models = require('../models')
 const config = require('config')
 const fileUtil = require('../helpers/fileUtil')
 const mysqlUtil = require('../helpers/mysqlUtil')
