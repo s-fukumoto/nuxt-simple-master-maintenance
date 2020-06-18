@@ -5,7 +5,7 @@ export default function ({ app, route, redirect, error }) {
   }
 
   // パスからページ情報を取得
-  const pageItem = app.$myConf.pageItems.find(
+  const pageItem = process.env.pageItems.find(
     (item) => item.path === route.path
   )
 

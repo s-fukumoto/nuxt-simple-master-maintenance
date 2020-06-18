@@ -1,10 +1,52 @@
+#============================
+# サーバー／クライアント共通
+#============================
+
+# 定数
+CONSTANTS:
+  # 権限
+  SCOPE:
+    PUBLIC: { VALUE: &SCP_PUB 1, NAME: "一般者" }
+    READER: { VALUE: &SCP_RED 2, NAME: "閲覧者" }
+    MODIFIER: { VALUE: &SCP_MOD 5, NAME: "更新者" }
+    ADMINISTRATOR: { VALUE: &SCP_ADM 9, NAME: "管理者" }
+
+
+# ページ情報
+pageItems:
+  - icon: "fa-home"
+    title: "トップ"
+    path: "/"
+    scopelevel: *SCP_PUB
+  - icon: "fa-place-of-worship"
+    title: "エリア・地域 メンテナンス"
+    path: "/area"
+    scopelevel: *SCP_RED
+  - icon: "fa-train"
+    title: "沿線・駅 メンテナンス"
+    path: "/railway_line"
+    scopelevel: *SCP_RED
+  - icon: "fa-cloud-upload-alt"
+    title: "インポート"
+    path: "/import"
+    scopelevel: *SCP_MOD
+  - icon: "fa-address-card"
+    title: "ユーザー管理"
+    path: "/user"
+    scopelevel: *SCP_ADM
+
+
+#===========================================================
+# 以下はサーバー設定のみ使用（nuxtのenvには公開してはいけない）
+#===========================================================
+
 # JSON Web Token
 jwt:
   secret: "7$|i93x%6z)P"
   expiresIn: "1h"
   ignorePath: ["/api/auth/login"]
 
-# JSON Web Token
+# 暗号化
 crypto:
   key: "K2UL3Q6FM6KL"
 

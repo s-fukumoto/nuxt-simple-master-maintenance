@@ -66,7 +66,7 @@ export default {
         username: '',
         name: '',
         password: '',
-        scopelevel: this.$myConst.SCOPE.READER.VALUE,
+        scopelevel: process.env.CONST.SCOPE.READER.VALUE,
       },
     }
   },

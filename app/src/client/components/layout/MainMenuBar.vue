@@ -54,9 +54,9 @@ export default {
   },
   computed: {
     items() {
-      return this.$myConf.pageItems.filter(
+      return process.env.pageItems.filter(
         (item) =>
-          item.scopelevel === this.$myConst.SCOPE.PUBLIC.VALUE ||
+          item.scopelevel === process.env.CONST.SCOPE.PUBLIC.VALUE ||
           (this.$auth.$state.loggedIn &&
             this.$auth.$state.user.scopelevel >= item.scopelevel)
       )
