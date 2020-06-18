@@ -13,11 +13,7 @@ app.use(bodyParser.json())
 
 // JWT middleware
 app.use(
-  jwt({
-    secret: config.jwt.secret,
-  }).unless({
-    path: config.jwt.path,
-  })
+  jwt({ secret: config.jwt.secret }).unless({ path: config.jwt.ignorePath })
 )
 
 // -- Routes --
@@ -26,8 +22,11 @@ app.use(routes)
 
 // Error handler
 app.use((err, req, res, next) => {
-  console.error(err) // eslint-disable-line no-console
-  res.status(401).send(err + '')
+  if (err instanceof jwt.UnauthorizedError) {
+    res
+      .status(401)
+      .send({ status: 'NG', error: 'Unauthorized Error (token expired)' })
+  }
 })
 
 // -- export app --

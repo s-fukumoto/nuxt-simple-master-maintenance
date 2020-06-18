@@ -4,7 +4,7 @@
       ログイン中 [ {{ $auth.$state.user.name }} ]
     </v-card-title>
     <v-card-text>
-      <p><i>メンテナンスメニューより処理してください</i></p>
+      メンテナンスメニューより処理してください
     </v-card-text>
     <v-card-actions>
       <v-spacer />
@@ -26,7 +26,7 @@ export default {
           this.$toast.show('ログアウトしました')
         })
         .catch((e) => {
-          console.error(`logout error (${e.message})`)
+          //console.error(`logout error (${e.message})`)
           this.$toast.show('ログアウトに失敗しました')
           this.formError = 'ログアウトに失敗しました'
         })

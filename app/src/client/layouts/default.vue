@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- メニューバー -->
-    <p-main-menu-bar :menu-items="$myConf.pageItems" />
+    <p-main-menu-bar />
 
     <!-- コンテンツ -->
     <v-content>

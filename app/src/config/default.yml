@@ -1,10 +1,8 @@
-# API
-baseUrl: "http://localhost:63000"
-
 # JSON Web Token
 jwt:
   secret: "7$|i93x%6z)P"
-  path: ["/api/auth/login"]
+  expiresIn: "1h"
+  ignorePath: ["/api/auth/login"]
 
 # JSON Web Token
 crypto:
@@ -21,6 +19,7 @@ db:
   dialect: "mysql"
   operatorsAliases: "false"
 
+# インポート設定
 import:
   table:
     address:

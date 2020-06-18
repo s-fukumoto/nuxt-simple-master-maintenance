@@ -23,7 +23,10 @@ module.exports = {
             name: user.get('name'),
             scopelevel: user.get('scopelevel'),
           },
-          config.jwt.secret
+          config.jwt.secret,
+          {
+            expiresIn: config.jwt.expiresIn,
+          }
         )
         res.json({ token: { accessToken } })
       })

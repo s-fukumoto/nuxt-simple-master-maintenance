@@ -8,7 +8,7 @@
         <v-alert :value="!!formError" type="error">
           {{ formError }}
         </v-alert>
-        <p><i>ログインしてメンテナンスを開始してください</i></p>
+        ログインしてメンテナンスを開始してください
         <p-text-field
           v-model="formUserName"
           label="ユーザー識別"
@@ -58,7 +58,6 @@ export default {
       }
     },
     async login() {
-      console.log(this.formUserName)
       return await this.$auth
         .loginWith('local', {
           data: {
@@ -71,7 +70,7 @@ export default {
           this.$toast.show('ログインしました')
         })
         .catch((e) => {
-          console.error(`login error (${e.message})`)
+          //console.error(`login error (${e.message})`)
           this.$toast.show('ログインに失敗しました')
           this.formError = 'ログインに失敗しました'
         })

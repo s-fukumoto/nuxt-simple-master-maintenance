@@ -1,13 +1,8 @@
-const conf = require('config')
 const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
   srcDir: './client/',
-  /*
-   ** 個別設定
-   */
-  env: conf,
 
   /*
    ** Headers of the page
@@ -36,7 +31,7 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/my-constants', 
+    '@/plugins/my-constants',
     '@/plugins/my-config',
     '@/plugins/common-components',
   ],
@@ -69,7 +64,7 @@ module.exports = {
    ** proxy
    */
   proxy: {
-    '/api': conf.baseUrl,
+    '/api': 'http://localhost:63000',
   },
 
   /*
@@ -123,7 +118,10 @@ module.exports = {
    ** auth
    */
   auth: {
+    // SSRではcookie,localStorage両方有効にしないとうまく機能しない
     //cookie: false,
+    //localStorage: false,
+    secure: process.env.NODE_ENV === 'production',
     redirect: {
       login: '/',
       logout: '/',
