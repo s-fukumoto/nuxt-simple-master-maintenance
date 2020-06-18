@@ -1,8 +1,16 @@
 const pkg = require('./package')
+const conf = require('config')
 
 module.exports = {
   mode: 'universal',
   srcDir: './client/',
+  /*
+   ** 個別設定
+   */
+  env: {
+    CONST: conf.get('CONSTANTS'),
+    pageItems: conf.get('pageItems'),
+  },
 
   /*
    ** Headers of the page
@@ -30,11 +38,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    '@/plugins/my-constants',
-    '@/plugins/my-config',
-    '@/plugins/common-components',
-  ],
+  plugins: ['@/plugins/common-components'],
 
   /*
    ** Nuxt.js modules
